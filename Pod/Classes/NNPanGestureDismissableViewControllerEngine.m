@@ -16,52 +16,55 @@
 
 
 @implementation NNPanGestureDismissableViewControllerEngine{
-	__weak UIViewController* _vc;
-	UIPercentDrivenInteractiveTransition* _interactiveTransition;
-    UIGestureRecognizer* _scrollViewDisabledGestureRecognizer;
+    __weak UIViewController* _vc;
+    UIPercentDrivenInteractiveTransition* _interactiveTransition;
+    NSMutableArray<UIGestureRecognizer*>* _scrollViewDisabledGestureRecognizers;
     DismissTransition* _closeAnimator;
 }
 
 -(instancetype)initWithViewController:(UIViewController*)viewController{
-	if( self = [super init] ) {
-		_vc = viewController;
-		_vc.transitioningDelegate = self;
-	}
-	return self;
+    if( self = [super init] ) {
+        _vc = viewController;
+        _vc.transitioningDelegate = self;
+        _scrollViewDisabledGestureRecognizers = [NSMutableArray new];
+    }
+    return self;
 }
 
 
 
 
 -(void)addGestureRecognizer{
-	UIPanGestureRecognizer* gr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
+    UIPanGestureRecognizer* gr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     gr.delegate = self;
-	[_vc.view addGestureRecognizer:gr];
+    [_vc.view addGestureRecognizer:gr];
 }
 
 
 -(void)onPan:(UIPanGestureRecognizer*)recognizer{
-	if( recognizer.state == UIGestureRecognizerStateBegan ){
-		_interactiveTransition = [UIPercentDrivenInteractiveTransition new];
-		[_vc dismissViewControllerAnimated:YES completion:nil];
-	} else if (recognizer.state == UIGestureRecognizerStateChanged) {
-		CGPoint point = [recognizer translationInView:_vc.view];
-		CGFloat progress = point.y / _vc.view.bounds.size.height;
-		[_interactiveTransition updateInteractiveTransition:progress];
-	} else if (recognizer.state == UIGestureRecognizerStateEnded || recognizer.state == UIGestureRecognizerStateCancelled) {
-		CGPoint velocity = [recognizer velocityInView:_vc.view];
-		if( velocity.y > 500 ){
+    if( recognizer.state == UIGestureRecognizerStateBegan ){
+        _interactiveTransition = [UIPercentDrivenInteractiveTransition new];
+        [_vc dismissViewControllerAnimated:YES completion:nil];
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        CGPoint point = [recognizer translationInView:_vc.view];
+        CGFloat progress = point.y / _vc.view.bounds.size.height;
+        [_interactiveTransition updateInteractiveTransition:progress];
+    } else if (recognizer.state == UIGestureRecognizerStateEnded || recognizer.state == UIGestureRecognizerStateCancelled) {
+        CGPoint velocity = [recognizer velocityInView:_vc.view];
+        if( velocity.y > 500 ){
             _interactiveTransition.completionSpeed = 1;
             _interactiveTransition.completionCurve = UIViewAnimationCurveEaseOut;
-			[_interactiveTransition finishInteractiveTransition];
-		} else {
+            [_interactiveTransition finishInteractiveTransition];
+        } else {
             _interactiveTransition.completionSpeed = 0.33;
             _interactiveTransition.completionCurve = UIViewAnimationCurveEaseInOut;
-			[_interactiveTransition cancelInteractiveTransition];
-            _scrollViewDisabledGestureRecognizer.enabled = YES;
-		}
-		_interactiveTransition = nil;
-	}
+            [_interactiveTransition cancelInteractiveTransition];
+            for (UIGestureRecognizer* gr in _scrollViewDisabledGestureRecognizers) {
+                gr.enabled = YES;
+            }
+        }
+        _interactiveTransition = nil;
+    }
 }
 
 
@@ -73,11 +76,13 @@
     if( [otherGestureRecognizer.view isMemberOfClass:[UIScrollView class]] || [otherGestureRecognizer.view isMemberOfClass:[UITableView class]] ){
         UIScrollView* tableView = (UIScrollView*)otherGestureRecognizer.view;
         if( tableView.contentOffset.y <= -tableView.contentInset.top ){
-//            NBULogInfo(@"scrollViewのトップにいます");
+            //            NBULogInfo(@"scrollViewのトップにいます");
             CGPoint velocity = [gestureRecognizer velocityInView:_vc.view];
             if( velocity.y >= 0 ){
-                otherGestureRecognizer.enabled = NO;
-                _scrollViewDisabledGestureRecognizer = otherGestureRecognizer;
+                if( otherGestureRecognizer.enabled == YES ){
+                    otherGestureRecognizer.enabled = NO;
+                    [_scrollViewDisabledGestureRecognizers addObject:otherGestureRecognizer];
+                }
             }
         }
     }
@@ -93,13 +98,13 @@
         case UIModalTransitionStyleCrossDissolve:
             return [CrossDissolvePresentTransition new];
         default:
-           return [CoverVerticalPresentTransition new];
+            return [CoverVerticalPresentTransition new];
     }
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
     _closeAnimator = [[DismissTransition alloc] initWithModalTransitionStyle:_vc.modalTransitionStyle];
-	return _closeAnimator;
+    return _closeAnimator;
 }
 
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator{
@@ -108,7 +113,7 @@
     } else {
         _closeAnimator.isInteractiveTransition = NO;
     }
-	return _interactiveTransition;
+    return _interactiveTransition;
 }
 
 @end
@@ -146,9 +151,9 @@
     if( toVC.modalPresentationStyle == UIModalPresentationCustom ){
         [fromVC beginAppearanceTransition:NO animated:YES];
     }
-
+    
     [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:(7<<16) animations:^{
-       toVC.view.alpha = 1;
+        toVC.view.alpha = 1;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
         
@@ -230,7 +235,7 @@
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
     /// パンによるdismissなら、かならずverticalTransitionにする
     if( _isInteractiveTransition ){
-         [self animateVerticalTransition:transitionContext];
+        [self animateVerticalTransition:transitionContext];
         return;
     }
     
