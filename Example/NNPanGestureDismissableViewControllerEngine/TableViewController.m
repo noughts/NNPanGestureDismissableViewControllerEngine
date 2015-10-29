@@ -7,12 +7,30 @@
 //
 
 #import "TableViewController.h"
-
+#import <NBULog.h>
 
 @implementation TableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NBULogInfo(@"%@", NSStringFromSelector(_cmd));
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    NBULogInfo(@"%@", NSStringFromSelector(_cmd));
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    NBULogInfo(@"%@", NSStringFromSelector(_cmd));
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
 
 

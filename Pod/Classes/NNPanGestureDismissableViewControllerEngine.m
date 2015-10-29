@@ -134,12 +134,16 @@
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
-    //	UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    	UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView = [transitionContext containerView];
     
     [containerView addSubview:toVC.view];
     toVC.view.alpha = 0;
+    
+    if( toVC.modalPresentationStyle == UIModalPresentationCustom ){
+        [fromVC beginAppearanceTransition:NO animated:YES];
+    }
 
     [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:(7<<16) animations:^{
        toVC.view.alpha = 1;
@@ -163,7 +167,7 @@
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
-    //	UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView = [transitionContext containerView];
     
@@ -174,11 +178,18 @@
     initFrame.origin.y = [UIScreen mainScreen].bounds.size.height;
     toVC.view.frame = initFrame;
     
+    if( toVC.modalPresentationStyle == UIModalPresentationCustom ){
+        [fromVC beginAppearanceTransition:NO animated:YES];
+    }
+    
 
     [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:(7<<16) animations:^{
         toVC.view.frame = targetFrame;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
+        if( toVC.modalPresentationStyle == UIModalPresentationCustom ){
+            [fromVC endAppearanceTransition];
+        }
     }];
 }
 
