@@ -88,7 +88,7 @@
                                 <rect key="frame" x="110" y="373" width="101" height="30"/>
                                 <state key="normal" title="ViewController"/>
                                 <connections>
-                                    <segue destination="uhz-F9-mm4" kind="modal" id="1Z6-Kl-Wut"/>
+                                    <segue destination="uhz-F9-mm4" kind="modal" modalTransitionStyle="crossDissolve" id="1Z6-Kl-Wut"/>
                                 </connections>
                             </button>
                         </subviews>

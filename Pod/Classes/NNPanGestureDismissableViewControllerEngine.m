@@ -141,6 +141,7 @@
     [containerView addSubview:toVC.view];
     toVC.view.alpha = 0;
     
+    /// UIModalPresentationCustom の場合、遷移元のviewWillDisappearが呼ばれないので呼ぶ
     if( toVC.modalPresentationStyle == UIModalPresentationCustom ){
         [fromVC beginAppearanceTransition:NO animated:YES];
     }
@@ -149,6 +150,11 @@
        toVC.view.alpha = 1;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
+        
+        /// UIModalPresentationCustom の場合、遷移元のviewDidDisappearが呼ばれないので呼ぶ。順番は[transitionContext completeTransition]のあと
+        if( toVC.modalPresentationStyle == UIModalPresentationCustom ){
+            [fromVC endAppearanceTransition];
+        }
     }];
 }
 
@@ -178,15 +184,17 @@
     initFrame.origin.y = [UIScreen mainScreen].bounds.size.height;
     toVC.view.frame = initFrame;
     
+    /// UIModalPresentationCustom の場合、遷移元のviewWillDisappearが呼ばれないので呼ぶ
     if( toVC.modalPresentationStyle == UIModalPresentationCustom ){
         [fromVC beginAppearanceTransition:NO animated:YES];
     }
     
-
     [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:(7<<16) animations:^{
         toVC.view.frame = targetFrame;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
+        
+        /// UIModalPresentationCustom の場合、遷移元のviewDidDisappearが呼ばれないので呼ぶ。順番は[transitionContext completeTransition]のあと
         if( toVC.modalPresentationStyle == UIModalPresentationCustom ){
             [fromVC endAppearanceTransition];
         }
