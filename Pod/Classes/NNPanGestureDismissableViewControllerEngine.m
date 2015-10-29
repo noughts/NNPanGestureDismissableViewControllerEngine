@@ -1,9 +1,9 @@
 @import UIKit;
 
-@interface CoverVerticalTransition : NSObject<UIViewControllerAnimatedTransitioning> @end
-@interface CrossDissolveTransition : NSObject<UIViewControllerAnimatedTransitioning> @end
+@interface CoverVerticalPresentTransition : NSObject<UIViewControllerAnimatedTransitioning> @end
+@interface CrossDissolvePresentTransition : NSObject<UIViewControllerAnimatedTransitioning> @end
 
-@interface CloseAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface CoverVerticalDismissTransition : NSObject <UIViewControllerAnimatedTransitioning>
 @property BOOL isInteractiveTransition;
 @end
 
@@ -18,7 +18,7 @@
 	__weak UIViewController* _vc;
 	UIPercentDrivenInteractiveTransition* _interactiveTransition;
     UIGestureRecognizer* _scrollViewDisabledGestureRecognizer;
-    CloseAnimator* _closeAnimator;
+    CoverVerticalDismissTransition* _closeAnimator;
 }
 
 -(instancetype)initWithViewController:(UIViewController*)viewController{
@@ -90,14 +90,14 @@
 -(id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
     switch (_vc.modalTransitionStyle) {
         case UIModalTransitionStyleCrossDissolve:
-            return [CrossDissolveTransition new];
+            return [CrossDissolvePresentTransition new];
         default:
-           return [CoverVerticalTransition new];
+           return [CoverVerticalPresentTransition new];
     }
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-    _closeAnimator = [CloseAnimator new];
+    _closeAnimator = [CoverVerticalDismissTransition new];
 	return _closeAnimator;
 }
 
@@ -132,7 +132,7 @@
 
 
 
-@implementation CrossDissolveTransition
+@implementation CrossDissolvePresentTransition
 
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
     return 0.25;
@@ -161,7 +161,7 @@
 
 
 
-@implementation CoverVerticalTransition
+@implementation CoverVerticalPresentTransition
 
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
     return 0.25;
@@ -196,7 +196,7 @@
 
 
 
-@implementation CloseAnimator
+@implementation CoverVerticalDismissTransition
 
 
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
