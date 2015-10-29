@@ -134,12 +134,13 @@
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
-    	UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView = [transitionContext containerView];
     
     [containerView addSubview:toVC.view];
     toVC.view.alpha = 0;
+    toVC.view.frame = fromVC.view.frame;
     
     /// UIModalPresentationCustom の場合、遷移元のviewWillDisappearが呼ばれないので呼ぶ
     if( toVC.modalPresentationStyle == UIModalPresentationCustom ){
