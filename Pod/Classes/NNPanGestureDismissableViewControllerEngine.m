@@ -9,12 +9,12 @@
 
 
 
-#import "InteractiveTransitionEngine.h"
+#import "NNPanGestureDismissableViewControllerEngine.h"
 #import "NBULogStub.h"
 
 
 
-@implementation InteractiveTransitionEngine{
+@implementation NNPanGestureDismissableViewControllerEngine{
 	UIViewController* _vc;
 	UIPercentDrivenInteractiveTransition* _interactiveTransition;
     UIGestureRecognizer* _scrollViewDisabledGestureRecognizer;

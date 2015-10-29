@@ -7,15 +7,15 @@
 //
 
 #import "MyNC1.h"
-#import <InteractiveTransitionEngine.h>
+#import <NNPanGestureDismissableViewControllerEngine.h>
 
 @implementation MyNC1{
-    InteractiveTransitionEngine* _engine;
+    NNPanGestureDismissableViewControllerEngine* _engine;
 }
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-     _engine = [[InteractiveTransitionEngine alloc] initWithViewController:self];
+     _engine = [[NNPanGestureDismissableViewControllerEngine alloc] initWithViewController:self];
 }
 
 - (void)viewDidLoad {

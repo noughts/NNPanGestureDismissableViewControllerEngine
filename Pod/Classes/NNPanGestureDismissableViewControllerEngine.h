@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @import UIKit;
 
-@interface InteractiveTransitionEngine : NSObject <UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate>
+@interface NNPanGestureDismissableViewControllerEngine : NSObject <UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate>
 
 -(instancetype)initWithViewController:(UIViewController*)viewController;
 
