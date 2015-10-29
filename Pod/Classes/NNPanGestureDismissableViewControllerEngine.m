@@ -1,9 +1,8 @@
 @import UIKit;
-@interface OpenAnimator : NSObject<UIViewControllerAnimatedTransitioning>
-@end
 
+@interface CoverVerticalTransition : NSObject<UIViewControllerAnimatedTransitioning> @end
+@interface CrossDissolveTransition : NSObject<UIViewControllerAnimatedTransitioning> @end
 
-@import UIKit;
 @interface CloseAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 @property BOOL isInteractiveTransition;
 @end
@@ -90,8 +89,12 @@
 #pragma mark - Transition Delegate
 
 -(id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
-    NBULogInfo(@"%@",@(_vc.modalTransitionStyle));
-	return [OpenAnimator new];
+    switch (_vc.modalTransitionStyle) {
+        case UIModalTransitionStyleCrossDissolve:
+            return [CrossDissolveTransition new];
+        default:
+           return [CoverVerticalTransition new];
+    }
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
@@ -130,9 +133,36 @@
 
 
 
+@implementation CrossDissolveTransition
+
+- (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
+    return 0.25;
+}
+
+- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
+    //	UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIView *containerView = [transitionContext containerView];
+    
+    [containerView addSubview:toVC.view];
+    toVC.view.alpha = 0;
+
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:(7<<16) animations:^{
+       toVC.view.alpha = 1;
+    } completion:^(BOOL finished) {
+        [transitionContext completeTransition:YES];
+    }];
+}
+
+@end
 
 
-@implementation OpenAnimator
+
+
+
+
+
+@implementation CoverVerticalTransition
 
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
     return 0.25;
@@ -169,6 +199,9 @@
 
 @implementation CloseAnimator
 
+-(void)dealloc{
+    NBULogInfo(@"dealloc");
+}
 
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
     return 0.25;
