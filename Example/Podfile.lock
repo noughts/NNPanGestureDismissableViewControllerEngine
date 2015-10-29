@@ -1,0 +1,14 @@
+PODS:
+  - NNPanGestureDismissableViewControllerEngine (0.1.0)
+
+DEPENDENCIES:
+  - NNPanGestureDismissableViewControllerEngine (from `../`)
+
+EXTERNAL SOURCES:
+  NNPanGestureDismissableViewControllerEngine:
+    :path: ../
+
+SPEC CHECKSUMS:
+  NNPanGestureDismissableViewControllerEngine: 8f73ab4a7c37d474bb17557be3010fc795820cdf
+
+COCOAPODS: 0.38.2
