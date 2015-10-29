@@ -1,5 +1,5 @@
 @import UIKit;
-@interface Animator1 : NSObject<UIViewControllerAnimatedTransitioning>
+@interface OpenAnimator : NSObject<UIViewControllerAnimatedTransitioning>
 @end
 
 
@@ -89,7 +89,7 @@
 #pragma mark - Transition Delegate
 
 -(id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
-	return [Animator1 new];
+	return [OpenAnimator new];
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
@@ -124,7 +124,7 @@
 
 
 
-@implementation Animator1
+@implementation OpenAnimator
 
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
     return 0.25;
