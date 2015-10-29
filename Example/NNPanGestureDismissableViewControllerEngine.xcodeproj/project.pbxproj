@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D0BB6D41B400F02F0D724D2 /* Pods_NNPanGestureDismissableViewControllerEngine_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0CE05C0F8416D8A7597612 /* Pods_NNPanGestureDismissableViewControllerEngine_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		027A5F58F0B78D6C38C12681 /* libPods-NNPanGestureDismissableViewControllerEngine_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D488174F651DCEFEB2434D /* libPods-NNPanGestureDismissableViewControllerEngine_Tests.a */; };
+		4D49FF531BE1E31B005FE48C /* MyNC1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D49FF521BE1E31B005FE48C /* MyNC1.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -21,7 +22,7 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		6B119A58F5CEC6C8E31F7CBA /* Pods_NNPanGestureDismissableViewControllerEngine_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6219752E00575BE5985B6A /* Pods_NNPanGestureDismissableViewControllerEngine_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		85B1355D674FED033FCBBD3A /* libPods-NNPanGestureDismissableViewControllerEngine_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 009D9AC4F1D28CFEB76B3827 /* libPods-NNPanGestureDismissableViewControllerEngine_Example.a */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -36,10 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		009D9AC4F1D28CFEB76B3827 /* libPods-NNPanGestureDismissableViewControllerEngine_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NNPanGestureDismissableViewControllerEngine_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04400A006E2129398E94991C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1650B87F07F8B8441F97D5E7 /* NNPanGestureDismissableViewControllerEngine.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NNPanGestureDismissableViewControllerEngine.podspec; path = ../NNPanGestureDismissableViewControllerEngine.podspec; sourceTree = "<group>"; };
-		1D0CE05C0F8416D8A7597612 /* Pods_NNPanGestureDismissableViewControllerEngine_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NNPanGestureDismissableViewControllerEngine_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6003F58A195388D20070C39A /* NNPanGestureDismissableViewControllerEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = NNPanGestureDismissableViewControllerEngine.app; path = NNPanGestureDismissableViewControllerEngine_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20D488174F651DCEFEB2434D /* libPods-NNPanGestureDismissableViewControllerEngine_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NNPanGestureDismissableViewControllerEngine_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D49FF511BE1E31B005FE48C /* MyNC1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNC1.h; sourceTree = "<group>"; };
+		4D49FF521BE1E31B005FE48C /* MyNC1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNC1.m; sourceTree = "<group>"; };
+		6003F58A195388D20070C39A /* NNPanGestureDismissableViewControllerEngine_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NNPanGestureDismissableViewControllerEngine_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -52,7 +56,7 @@
 		6003F5A5195388D20070C39A /* NNViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NNViewController.h; sourceTree = "<group>"; };
 		6003F5A6195388D20070C39A /* NNViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NNViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6003F5AE195388D20070C39A /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Tests.xctest; path = NNPanGestureDismissableViewControllerEngine_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F5AE195388D20070C39A /* NNPanGestureDismissableViewControllerEngine_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NNPanGestureDismissableViewControllerEngine_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -63,7 +67,6 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9D6F59BA7D1697F25B2A3437 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B492287FBAEAA34B18F9C16C /* Pods-NNPanGestureDismissableViewControllerEngine_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NNPanGestureDismissableViewControllerEngine_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NNPanGestureDismissableViewControllerEngine_Tests/Pods-NNPanGestureDismissableViewControllerEngine_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		BF6219752E00575BE5985B6A /* Pods_NNPanGestureDismissableViewControllerEngine_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NNPanGestureDismissableViewControllerEngine_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1090C1C30C8C85C3571BA89 /* Pods-NNPanGestureDismissableViewControllerEngine_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NNPanGestureDismissableViewControllerEngine_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-NNPanGestureDismissableViewControllerEngine_Example/Pods-NNPanGestureDismissableViewControllerEngine_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +78,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				6B119A58F5CEC6C8E31F7CBA /* Pods_NNPanGestureDismissableViewControllerEngine_Example.framework in Frameworks */,
+				85B1355D674FED033FCBBD3A /* libPods-NNPanGestureDismissableViewControllerEngine_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +89,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				1D0BB6D41B400F02F0D724D2 /* Pods_NNPanGestureDismissableViewControllerEngine_Tests.framework in Frameworks */,
+				027A5F58F0B78D6C38C12681 /* libPods-NNPanGestureDismissableViewControllerEngine_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,8 +111,8 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* NNPanGestureDismissableViewControllerEngine.app */,
-				6003F5AE195388D20070C39A /* Tests.xctest */,
+				6003F58A195388D20070C39A /* NNPanGestureDismissableViewControllerEngine_Example.app */,
+				6003F5AE195388D20070C39A /* NNPanGestureDismissableViewControllerEngine_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,8 +124,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				BF6219752E00575BE5985B6A /* Pods_NNPanGestureDismissableViewControllerEngine_Example.framework */,
-				1D0CE05C0F8416D8A7597612 /* Pods_NNPanGestureDismissableViewControllerEngine_Tests.framework */,
+				009D9AC4F1D28CFEB76B3827 /* libPods-NNPanGestureDismissableViewControllerEngine_Example.a */,
+				20D488174F651DCEFEB2434D /* libPods-NNPanGestureDismissableViewControllerEngine_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -137,6 +140,8 @@
 				6003F5A6195388D20070C39A /* NNViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				4D49FF511BE1E31B005FE48C /* MyNC1.h */,
+				4D49FF521BE1E31B005FE48C /* MyNC1.m */,
 			);
 			name = "Example for NNPanGestureDismissableViewControllerEngine";
 			path = NNPanGestureDismissableViewControllerEngine;
@@ -204,7 +209,6 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				A88BF81A9CEA67B7725B4C8E /* Embed Pods Frameworks */,
 				EEB8E0E98394DE0834A7C4C8 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -213,7 +217,7 @@
 			);
 			name = NNPanGestureDismissableViewControllerEngine_Example;
 			productName = NNPanGestureDismissableViewControllerEngine;
-			productReference = 6003F58A195388D20070C39A /* NNPanGestureDismissableViewControllerEngine.app */;
+			productReference = 6003F58A195388D20070C39A /* NNPanGestureDismissableViewControllerEngine_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6003F5AD195388D20070C39A /* NNPanGestureDismissableViewControllerEngine_Tests */ = {
@@ -224,7 +228,6 @@
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				CD5B29DB9AB3100BD06F802D /* Embed Pods Frameworks */,
 				348313BF1802487BD501609C /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -234,7 +237,7 @@
 			);
 			name = NNPanGestureDismissableViewControllerEngine_Tests;
 			productName = NNPanGestureDismissableViewControllerEngineTests;
-			productReference = 6003F5AE195388D20070C39A /* Tests.xctest */;
+			productReference = 6003F5AE195388D20070C39A /* NNPanGestureDismissableViewControllerEngine_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -243,7 +246,7 @@
 		6003F582195388D10070C39A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = NN;
+				CLASSPREFIX = "";
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Koichi Yamamoto";
 				TargetAttributes = {
@@ -323,36 +326,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NNPanGestureDismissableViewControllerEngine_Tests/Pods-NNPanGestureDismissableViewControllerEngine_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A88BF81A9CEA67B7725B4C8E /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NNPanGestureDismissableViewControllerEngine_Example/Pods-NNPanGestureDismissableViewControllerEngine_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CD5B29DB9AB3100BD06F802D /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NNPanGestureDismissableViewControllerEngine_Tests/Pods-NNPanGestureDismissableViewControllerEngine_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DD70BEA5DB551A25BEFA29DE /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -392,6 +365,7 @@
 			files = (
 				6003F59E195388D20070C39A /* NNAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* NNViewController.m in Sources */,
+				4D49FF531BE1E31B005FE48C /* MyNC1.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
