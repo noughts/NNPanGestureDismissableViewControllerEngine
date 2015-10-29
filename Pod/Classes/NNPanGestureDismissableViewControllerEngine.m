@@ -252,8 +252,11 @@
     /// (逆に、透過モーダルの場合はinsertするとおかしくなります)
     if( fromVC.modalPresentationStyle == UIModalPresentationFullScreen ){
         [containerView insertSubview:toVC.view atIndex:0];
-    } else {
-//        [toVC beginAppearanceTransition:YES animated:YES];
+    }
+    
+    /// UIModalPresentationCustom の場合、遷移先のviewWillAppearが呼ばれないので呼ぶ
+    if( fromVC.modalPresentationStyle == UIModalPresentationCustom ){
+        [toVC beginAppearanceTransition:YES animated:YES];
     }
     
     CGRect targetFrame = fromVC.view.frame;
@@ -271,9 +274,21 @@
     [UIView animateWithDuration:duration delay:0 options:options animations:^{
         fromVC.view.frame = targetFrame;
     } completion:^(BOOL finished) {
+        /// UIModalPresentationCustom で途中でdismissをキャンセルした場合は遷移先のviewWillDisappearを呼ぶ
+        if( transitionContext.transitionWasCancelled && fromVC.modalPresentationStyle == UIModalPresentationCustom ){
+            [toVC beginAppearanceTransition:NO animated:YES];
+        }
+        
+        /// UIModalPresentationCustom の場合、遷移先のviewDidAppear(キャンセルの場合はviewDidDisappear)が呼ばれないので呼ぶ。順番は[transitionContext completeTransition]の前
+        if( fromVC.modalPresentationStyle == UIModalPresentationCustom ){
+            [toVC endAppearanceTransition];
+        }
+        
         [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
     }];
 }
+
+
 
 - (void)animateCrossDissolveTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
@@ -286,9 +301,19 @@
         [containerView insertSubview:toVC.view atIndex:0];
     }
     
+    /// UIModalPresentationCustom の場合、遷移先のviewWillAppearが呼ばれないので呼ぶ
+    if( fromVC.modalPresentationStyle == UIModalPresentationCustom ){
+        [toVC beginAppearanceTransition:YES animated:YES];
+    }
+    
     [UIView animateWithDuration:0 delay:0 options:(7<<16) animations:^{
         fromVC.view.alpha = 0;
     } completion:^(BOOL finished) {
+        /// UIModalPresentationCustom の場合、遷移先のviewDidAppearが呼ばれないので呼ぶ。順番は[transitionContext completeTransition]の前
+        if( fromVC.modalPresentationStyle == UIModalPresentationCustom ){
+            [toVC endAppearanceTransition];
+        }
+        
         [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
     }];
 }
