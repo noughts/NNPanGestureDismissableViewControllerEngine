@@ -18,18 +18,16 @@
 -(void)viewWillAppear:(BOOL)animated{
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
-
 -(void)viewDidAppear:(BOOL)animated{
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
-
 -(void)viewWillDisappear:(BOOL)animated{
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
-
 -(void)viewDidDisappear:(BOOL)animated{
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
-
 }
+
+
 
 @end

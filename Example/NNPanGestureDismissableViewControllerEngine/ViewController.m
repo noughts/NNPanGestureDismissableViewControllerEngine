@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import <NBULog.h>
 
 @implementation ViewController
 
@@ -15,6 +15,24 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    NBULogInfo(@"%@", NSStringFromSelector(_cmd));
+}
+-(void)viewDidAppear:(BOOL)animated{
+    NBULogInfo(@"%@", NSStringFromSelector(_cmd));
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    NBULogInfo(@"%@", NSStringFromSelector(_cmd));
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    NBULogInfo(@"%@", NSStringFromSelector(_cmd));
+}
+
+
+
+
 
 
 -(IBAction)close:(id)sender{

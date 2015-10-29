@@ -25,7 +25,7 @@
 -(instancetype)initWithViewController:(UIViewController*)viewController{
 	if( self = [super init] ) {
 		_vc = viewController;
-		_vc.modalPresentationStyle = UIModalPresentationCustom;
+//		_vc.modalPresentationStyle = UIModalPresentationCustom;
 		_vc.transitioningDelegate = self;
 	}
 	return self;
@@ -175,9 +175,14 @@
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    //	UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    //	UIView *containerView = [transitionContext containerView];
+    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIView *containerView = [transitionContext containerView];
     
+    /// 通常のモーダルの場合は、閉じるときに後ろにもとのVCを表示しておく
+    /// (逆に、透過モーダルの場合はinsertするとおかしくなります)
+    if( fromVC.modalPresentationStyle == UIModalPresentationFullScreen ){
+        [containerView insertSubview:toVC.view atIndex:0];
+    }
     
     CGRect targetFrame = fromVC.view.frame;
     targetFrame.origin.y = [UIScreen mainScreen].bounds.size.height;
