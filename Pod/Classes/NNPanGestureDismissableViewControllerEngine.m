@@ -233,6 +233,8 @@
     /// (逆に、透過モーダルの場合はinsertするとおかしくなります)
     if( fromVC.modalPresentationStyle == UIModalPresentationFullScreen ){
         [containerView insertSubview:toVC.view atIndex:0];
+    } else {
+//        [toVC beginAppearanceTransition:YES animated:YES];
     }
     
     CGRect targetFrame = fromVC.view.frame;

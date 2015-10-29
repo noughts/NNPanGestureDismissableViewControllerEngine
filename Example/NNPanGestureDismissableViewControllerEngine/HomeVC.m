@@ -16,15 +16,19 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [self viewWillAppear:animated];
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
 -(void)viewDidAppear:(BOOL)animated{
+    [self viewDidAppear:animated];
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
 -(void)viewWillDisappear:(BOOL)animated{
+    [self viewWillDisappear:animated];
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
 -(void)viewDidDisappear:(BOOL)animated{
+    [self viewDidDisappear:animated];
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
 
