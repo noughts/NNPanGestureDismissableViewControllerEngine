@@ -24,7 +24,6 @@
 -(instancetype)initWithViewController:(UIViewController*)viewController{
 	if( self = [super init] ) {
 		_vc = viewController;
-//		_vc.modalPresentationStyle = UIModalPresentationCustom;
 		_vc.transitioningDelegate = self;
 	}
 	return self;

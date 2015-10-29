@@ -120,7 +120,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.47999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ndg-LF-LeO">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="sJX-2P-mF9">
@@ -152,12 +152,12 @@
             </objects>
             <point key="canvasLocation" x="-19" y="489"/>
         </scene>
-        <!--MyNC2-->
+        <!--MyNC1-->
         <scene sceneID="0JB-rp-kmi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uhz-F9-mm4" customClass="MyNC2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uhz-F9-mm4" customClass="MyNC1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="JwO-Sw-1qE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JwO-Sw-1qE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
