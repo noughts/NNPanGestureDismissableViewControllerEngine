@@ -38,9 +38,8 @@
 	UIPanGestureRecognizer* gr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)];
     gr.delegate = self;
 	[_vc.view addGestureRecognizer:gr];
-    
-    
 }
+
 
 -(void)onPan:(UIPanGestureRecognizer*)recognizer{
 	if( recognizer.state == UIGestureRecognizerStateBegan ){

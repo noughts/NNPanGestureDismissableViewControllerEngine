@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Koichi Yamamoto. All rights reserved.
 //
 
-#import "NNViewController.h"
+#import "ViewController.h"
 
 
-@implementation NNViewController
+@implementation ViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];
