@@ -97,8 +97,8 @@
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-//    _closeAnimator = [CloseAnimator new];
-	return [CloseAnimator new];
+    _closeAnimator = [CloseAnimator new];
+	return _closeAnimator;
 }
 
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator{
@@ -198,9 +198,6 @@
 
 @implementation CloseAnimator
 
--(void)dealloc{
-    NBULogInfo(@"dealloc");
-}
 
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
     return 0.25;
