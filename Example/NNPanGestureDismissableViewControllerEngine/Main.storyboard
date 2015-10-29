@@ -119,8 +119,19 @@
                                     <action selector="close:" destination="5GN-OO-Fv5" eventType="touchUpInside" id="MJJ-b0-kHE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOSのバグか、ナビバーを黒にすると何故かこいつをinteractiveTransitionで閉じた時のdeallocが呼ばれないので注意" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LW7-fu-DmN">
+                                <rect key="frame" x="20" y="72" width="280" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.36757298519736842" green="0.39023951480263158" blue="0.58179995888157898" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LW7-fu-DmN" secondAttribute="trailing" constant="20" symbolic="YES" id="0mW-Qb-Jry"/>
+                            <constraint firstItem="LW7-fu-DmN" firstAttribute="leading" secondItem="Bo1-ba-CcL" secondAttribute="leading" constant="20" symbolic="YES" id="pxh-wz-MrT"/>
+                            <constraint firstItem="LW7-fu-DmN" firstAttribute="top" secondItem="lpt-4p-uQJ" secondAttribute="bottom" constant="8" symbolic="YES" id="yS9-ue-WeH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ndg-LF-LeO">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="sJX-2P-mF9">
