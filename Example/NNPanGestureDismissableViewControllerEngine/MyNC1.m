@@ -21,6 +21,7 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
      _engine = [[NNPanGestureDismissableViewControllerEngine alloc] initWithViewController:self];
+    self.modalPresentationStyle = UIModalPresentationCustom;
 }
 
 - (void)viewDidLoad {
