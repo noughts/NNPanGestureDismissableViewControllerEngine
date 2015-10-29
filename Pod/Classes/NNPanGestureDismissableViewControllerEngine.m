@@ -90,6 +90,7 @@
 #pragma mark - Transition Delegate
 
 -(id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    NBULogInfo(@"%@",@(_vc.modalTransitionStyle));
 	return [OpenAnimator new];
 }
 
