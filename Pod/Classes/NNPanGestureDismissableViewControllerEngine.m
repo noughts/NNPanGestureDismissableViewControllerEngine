@@ -3,7 +3,8 @@
 @interface CoverVerticalPresentTransition : NSObject<UIViewControllerAnimatedTransitioning> @end
 @interface CrossDissolvePresentTransition : NSObject<UIViewControllerAnimatedTransitioning> @end
 
-@interface CoverVerticalDismissTransition : NSObject <UIViewControllerAnimatedTransitioning>
+@interface DismissTransition : NSObject <UIViewControllerAnimatedTransitioning>
+-(instancetype)initWithModalTransitionStyle:(UIModalTransitionStyle)style;
 @property BOOL isInteractiveTransition;
 @end
 
@@ -18,7 +19,7 @@
 	__weak UIViewController* _vc;
 	UIPercentDrivenInteractiveTransition* _interactiveTransition;
     UIGestureRecognizer* _scrollViewDisabledGestureRecognizer;
-    CoverVerticalDismissTransition* _closeAnimator;
+    DismissTransition* _closeAnimator;
 }
 
 -(instancetype)initWithViewController:(UIViewController*)viewController{
@@ -97,12 +98,8 @@
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-    _closeAnimator = [CoverVerticalDismissTransition new];
+    _closeAnimator = [[DismissTransition alloc] initWithModalTransitionStyle:_vc.modalTransitionStyle];
 	return _closeAnimator;
-}
-
-- (id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator{
-	return nil;
 }
 
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator{
@@ -113,8 +110,6 @@
     }
 	return _interactiveTransition;
 }
-
-
 
 @end
 
@@ -196,7 +191,16 @@
 
 
 
-@implementation CoverVerticalDismissTransition
+@implementation DismissTransition{
+    UIModalTransitionStyle _style;
+}
+
+-(instancetype)initWithModalTransitionStyle:(UIModalTransitionStyle)style{
+    if( self = [super init] ){
+        _style = style;
+    }
+    return self;
+}
 
 
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
@@ -204,6 +208,23 @@
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
+    /// パンによるdismissなら、かならずverticalTransitionにする
+    if( _isInteractiveTransition ){
+         [self animateVerticalTransition:transitionContext];
+        return;
+    }
+    
+    switch (_style) {
+        case UIModalTransitionStyleCrossDissolve:
+            [self animateCrossDissolveTransition:transitionContext];
+            break;
+        default:
+            [self animateVerticalTransition:transitionContext];
+            break;
+    }
+}
+
+- (void)animateVerticalTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView = [transitionContext containerView];
@@ -228,6 +249,24 @@
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     [UIView animateWithDuration:duration delay:0 options:options animations:^{
         fromVC.view.frame = targetFrame;
+    } completion:^(BOOL finished) {
+        [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
+    }];
+}
+
+- (void)animateCrossDissolveTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
+    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIView *containerView = [transitionContext containerView];
+    
+    /// 通常のモーダルの場合は、閉じるときに後ろにもとのVCを表示しておく
+    /// (逆に、透過モーダルの場合はinsertするとおかしくなります)
+    if( fromVC.modalPresentationStyle == UIModalPresentationFullScreen ){
+        [containerView insertSubview:toVC.view atIndex:0];
+    }
+    
+    [UIView animateWithDuration:0 delay:0 options:(7<<16) animations:^{
+        fromVC.view.alpha = 0;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
     }];
