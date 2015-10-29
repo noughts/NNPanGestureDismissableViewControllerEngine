@@ -5,6 +5,7 @@
 
 @import UIKit;
 @interface CloseAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@property BOOL isInteractiveTransition;
 @end
 
 
@@ -18,6 +19,7 @@
 	UIViewController* _vc;
 	UIPercentDrivenInteractiveTransition* _interactiveTransition;
     UIGestureRecognizer* _scrollViewDisabledGestureRecognizer;
+    CloseAnimator* _closeAnimator;
 }
 
 -(instancetype)initWithViewController:(UIViewController*)viewController{
@@ -93,7 +95,8 @@
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-	return [CloseAnimator new];
+    _closeAnimator = [CloseAnimator new];
+	return _closeAnimator;
 }
 
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator{
@@ -101,6 +104,11 @@
 }
 
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator{
+    if( _interactiveTransition ){
+        _closeAnimator.isInteractiveTransition = YES;
+    } else {
+        _closeAnimator.isInteractiveTransition = NO;
+    }
 	return _interactiveTransition;
 }
 
@@ -161,6 +169,7 @@
 
 @implementation CloseAnimator
 
+
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
     return 0.25;
 }
@@ -174,8 +183,16 @@
     CGRect targetFrame = fromVC.view.frame;
     targetFrame.origin.y = [UIScreen mainScreen].bounds.size.height;
     
+    /// interactive transition なら、ドラッグに直線的に追従するように、イージングさせない
+    UIViewAnimationOptions options;
+    if( _isInteractiveTransition ){
+        options = UIViewAnimationOptionCurveLinear;
+    } else {
+        options = (7<<16);
+    }
+    
     NSTimeInterval duration = [self transitionDuration:transitionContext];
-    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:duration delay:0 options:options animations:^{
         fromVC.view.frame = targetFrame;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
