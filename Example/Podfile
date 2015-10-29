@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'NNPanGestureDismissableViewControllerEngine_Example', :exclusive => true do
+  pod "NNPanGestureDismissableViewControllerEngine", :path => "../"
+end
+
+target 'NNPanGestureDismissableViewControllerEngine_Tests', :exclusive => true do
+  pod "NNPanGestureDismissableViewControllerEngine", :path => "../"
+
+  
+end
