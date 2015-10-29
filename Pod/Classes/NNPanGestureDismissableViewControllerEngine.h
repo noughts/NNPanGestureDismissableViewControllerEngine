@@ -1,10 +1,20 @@
-//
-//  InteractiveTransitionEngine.h
-//  TransparentModalPractice
-//
-//  Created by noughts on 2015/10/28.
-//  Copyright © 2015年 dividual. All rights reserved.
-//
+/*
+ 
+下にフリックするとモーダルを閉じることができるようにするエンジンです
+ 
+ HOW TO USE
+ 
+ 1. 対象の UIViewController の awakeFromNib または init で _engine = [NNPanGestureDismissableViewControllerEngine alloc] initWithViewController:self]; する
+ 2. viewDidLoad で [_engine addGestureRecognizer]; する
+ 以上
+ 
+ 
+ 
+ 
+ 
+ 
+ */
+
 
 #import <Foundation/Foundation.h>
 @import UIKit;
