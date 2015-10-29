@@ -8,9 +8,14 @@
 
 #import "MyNC1.h"
 #import <NNPanGestureDismissableViewControllerEngine.h>
+#import <NBULog.h>
 
 @implementation MyNC1{
     NNPanGestureDismissableViewControllerEngine* _engine;
+}
+
+-(void)dealloc{
+    NBULogInfo(@"dealloc");
 }
 
 -(void)awakeFromNib{

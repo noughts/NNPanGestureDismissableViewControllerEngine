@@ -15,7 +15,7 @@
 
 
 @implementation NNPanGestureDismissableViewControllerEngine{
-	UIViewController* _vc;
+	__weak UIViewController* _vc;
 	UIPercentDrivenInteractiveTransition* _interactiveTransition;
     UIGestureRecognizer* _scrollViewDisabledGestureRecognizer;
     CloseAnimator* _closeAnimator;
@@ -98,8 +98,8 @@
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-    _closeAnimator = [CloseAnimator new];
-	return _closeAnimator;
+//    _closeAnimator = [CloseAnimator new];
+	return [CloseAnimator new];
 }
 
 - (id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator{

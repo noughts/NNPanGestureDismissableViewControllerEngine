@@ -8,9 +8,14 @@
 
 #import "MyNC2.h"
 #import <NNPanGestureDismissableViewControllerEngine.h>
+#import <NBULog.h>
 
 @implementation MyNC2{
     NNPanGestureDismissableViewControllerEngine* _engine;
+}
+
+-(void)dealloc{
+    NBULogInfo(@"dealloc");
 }
 
 -(void)awakeFromNib{
