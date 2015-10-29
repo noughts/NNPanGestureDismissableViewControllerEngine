@@ -19,19 +19,19 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self viewWillAppear:animated];
+    [super viewWillAppear:animated];
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
 -(void)viewDidAppear:(BOOL)animated{
-    [self viewDidAppear:animated];
+    [super viewDidAppear:animated];
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
 -(void)viewWillDisappear:(BOOL)animated{
-    [self viewWillDisappear:animated];
+    [super viewWillDisappear:animated];
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
 -(void)viewDidDisappear:(BOOL)animated{
-    [self viewDidDisappear:animated];
+    [super viewDidDisappear:animated];
     NBULogInfo(@"%@", NSStringFromSelector(_cmd));
 }
 
