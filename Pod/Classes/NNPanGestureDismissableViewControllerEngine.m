@@ -131,7 +131,6 @@
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
-    //containerViewに遷移元と遷移先のViewを取得して入れる
     //	UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView = [transitionContext containerView];
@@ -143,8 +142,7 @@
     initFrame.origin.y = [UIScreen mainScreen].bounds.size.height;
     toVC.view.frame = initFrame;
     
-    
-    //適当にアニメーション
+
     [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:(7<<16) animations:^{
         toVC.view.frame = targetFrame;
     } completion:^(BOOL finished) {
