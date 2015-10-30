@@ -72,6 +72,9 @@
 #pragma mark - GestureRecognizer Delegate
 
 - (BOOL)gestureRecognizer:(UIPanGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+	if( [otherGestureRecognizer isMemberOfClass:[UITapGestureRecognizer class]] ){
+		return NO;
+	}
     /// UITableViewWrapperView とか余計なシステムクラスが入ってくるので、isMemberOfClassを使って厳格に判定
     if( [otherGestureRecognizer.view isMemberOfClass:[UIScrollView class]] || [otherGestureRecognizer.view isMemberOfClass:[UITableView class]] ){
         UIScrollView* tableView = (UIScrollView*)otherGestureRecognizer.view;
